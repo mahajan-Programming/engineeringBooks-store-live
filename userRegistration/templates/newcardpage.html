@@ -1,0 +1,406 @@
+{%load static%}
+<!DOCTYPE html>
+{%block head%}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Buy Books</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{%endblock head%}
+{%block style%}
+<style>
+
+
+
+
+  h2 {
+    position: relative;
+    z-index: 2;
+    padding: 0.5em 1em;
+  }
+  
+  @keyframes hide {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+  
+  @keyframes show {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  h2::before, h2::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    content: '';
+  }
+  
+  h2::before {
+    background: #f7872c;
+    z-index: -1;
+    width: 0;
+  }
+  
+  h2::after {
+    background: #e9ad0a4b;
+    width: 100%;
+  }
+  
+  h2.show::before {
+    animation: show 3s .3s forwards cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  h2.show::after {
+    animation: hide 1.7s forwards cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  
+  button {
+    background: none;
+    border: 1px solid currentColor;
+    padding: 1em 2em;
+    margin-top: 2em;
+    font-weight: 100;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    color: rgb(31, 2, 2);
+    transition: all .25s ease;
+  }
+  
+  button:hover {
+    color: rgb(212, 56, 56);
+  }
+
+
+
+
+
+
+
+
+  div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+  background-color: #e8e8e8;
+  font-family: 'proxima nova';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3em 1em;
+}
+
+.download-cards {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.download-card {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  width: calc(100% - 2em);
+  background: #fbfbfb;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid #d2d2d2;
+  border-left: 1px solid #dadada;
+  margin: 0 1em 2em 1em;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view='grid-view'] .download-card {
+    float: left;
+    width: calc( 50% - 2em );
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(3) {
+    clear: both;
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(4) {
+    clear: initial;
+  }
+}
+@media (min-width: 1000px) {
+  .download-cards[data-view='grid-view'] .download-card {
+    width: calc( (100% / 3) - 2em );
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(3) {
+    clear: initial;
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(4) {
+    clear: both;
+  }
+}
+.download-card__icon-box {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  background: #f1f1f1;
+  padding: 0em;
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .download-card__icon-box {
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+}
+.download-card__icon-box img {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view='list-view'] .download-card__icon-box {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-right: 1px solid #e6e6e6;
+  }
+}
+.download-card__content-box {
+  padding: 2em 2em 3em;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view="list-view"] .download-card__content-box {
+    padding-left: calc(200px + 2em);
+  }
+}
+.download-card__content-box__catagory {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin: 0 0 2em;
+}
+.download-card__content-box__catagory::before {
+  content: '| ';
+  color: #ff4500;
+}
+.download-card__content-box__title {
+  line-height: 1;
+  margin: 0 0 .5em;
+  font-size: 18px;
+}
+.download-card__content-box__description {
+  line-height: 1.5;
+  padding: 0;
+  margin: 0 0 1em;
+  clear: both;
+  color: #929292;
+  font-size: 16px;
+}
+.download-card__content-box .button {
+  position: absolute;
+  bottom: 2em;
+  margin: 0;
+  color: #ff4500;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.dc-view-switcher {
+  display: none;
+  margin: 1em;
+  text-align: right;
+}
+@media (min-width: 700px) {
+  .dc-view-switcher {
+    display: block;
+  }
+}
+.dc-view-switcher > button {
+  font-family: 'fontAwesome';
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: gray;
+  opacity: 0.3;
+  outline: none;
+  -webkit-transition: opacity .4s ease;
+  transition: opacity .4s ease;
+}
+.dc-view-switcher > button[data-trigger="list-view"]::before {
+  content: "\f00b";
+}
+.dc-view-switcher > button[data-trigger="grid-view"]::before {
+  content: "\f009";
+}
+.dc-view-switcher > button[data-trigger].active {
+  opacity: 1;
+}
+</style>
+{%endblock style%}
+{%block body%}
+
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+  <h2 class="show">{{b}} __ {{s}}...</h2>
+  <div class="scrollmenu">
+  <a href="{%url 'unicards'%}"><button>Calculator & Uniform</button></a>
+  
+  <a href="{%url 'filesFolder' b%}"><button>Get PDF's</button></a>
+  <a href="{%url 'searchbooks'%}"><button>Search Other Books</button></a>
+
+  </div>
+
+    <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+    <div id="myDIV">
+  <div class="dc-view-switcher">
+    <button data-trigger="grid-view"></button>
+    <button data-trigger="list-view" class="active"></button>
+  </div>
+  <a style="color: rgb(240, 26, 26);" href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book&phone=+917588181447">
+    (51) 9988-7766
+  </a>
+  {%for book in books%}
+  <div data-view="list-view" class="download-cards">
+    <article class="download-card">
+      <div class="download-card__icon-box"><img media src="/media/{{book.BookImage}}" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">{{book.Tag1}} & {{book.Tag2}}</h2>
+          <h3 class="download-card__content-box__title">{{book.BookName}}, Publisher <b>{{book.Price}}<b></h3>
+          <p class="download-card__content-box__description">{{book.BookOwner.Institute}}, {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</p>
+          <a  href="tel:{{book.BookOwner.PhoneNo}}" class="button"> <i class="fa fa-cloud-download"></i> Call {{book.BookOwner.PhoneNo}}</a>
+          <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book&phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
+
+        </div>
+      </div>
+    </article>
+    </div>
+    {%endfor%}
+    
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</body>
+{%endblock body%}
+{%block script%}
+<script>
+var downloadGrid = (function(){
+  
+  "use strict";
+  
+  var $cardContainer = $('.download-cards');
+  var $downloadCard  = $('.download-card__content-box');
+  var $viewTrigger   = $('button').attr('data', 'trigger');
+
+  function swapTriggerActiveClass(e) {   
+    $viewTrigger.removeClass('active');
+    $(e.target).addClass('active');
+  }
+
+  function swapView(e) {
+    var $currentView = $(e.target).attr('data-trigger');
+    $cardContainer.attr('data-view', $currentView);
+  }
+
+  $(document).ready(function(){
+    // Event Listener
+    $viewTrigger.click(function(e){
+      swapTriggerActiveClass(e);
+      swapView(e);        
+    });  
+  });
+  
+})();
+
+
+
+
+
+      
+    //search code
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myDIV *").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+</script>
+{%endblock script%}
+</html>

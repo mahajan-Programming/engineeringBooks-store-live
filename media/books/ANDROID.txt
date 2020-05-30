@@ -1,0 +1,36 @@
+android studio.....
+1. joinig two activity page...by....(INTENT)
+	Intent intent = new intent(MainActivity.this, AllBooksactivity.class)
+	startActivity(intent);
+	a.we can pass data in intent.
+2.Array list......
+	ArrayList<String>name;
+	name=new Arraylist<>();
+	name.add("hii");
+	.
+	.
+	and so on...
+	ArrayAdapter<String>adapter=new ArrayAdapter<>(this,android.R.layout.'type', name);
+	spinner.setAdapter(adapter);
+3.RecyclerView.....
+	To make app more beautiful.
+	for recycle view we need to create our own adapter
+	a.first we need to create the layout file
+	b. create a java class for adapter
+4.notifydatasetchange()
+
+
+book recyclerview java class......making
+a.make a java class
+b.make viewholder class
+c.extend recyclerview.viewholder to viewholder
+d.extend class recyclerview.adapter<bookrecview.viewholder>
+
+
+glide.....
+access the image from the url
+code to be written
+in onbind view holder
+{
+	
+}
