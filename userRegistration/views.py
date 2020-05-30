@@ -69,11 +69,15 @@ def sellerDashBoard(request):
     current_user = UserPersonalInfo.objects.get(username = request.user)
     current_user_books =  NewBook.objects.filter(BookOwner = current_user)
     current_user_calc = Calc.objects.filter(CalcOwner = current_user)
+    current_user_uni = WorkShopUniForm.filter(CalcOwner = current_user)
     if request.method == 'POST':
         soldBook = request.POST.get('sold')
         NewBook.objects.get(pk=soldBook).delete()
-
-    return render(request,"sellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc})
+        soldcalc = request.POST.get('soldclac')
+        Calc.objects.get(pk=soldcalc).delete()
+        solduni = request.POST.get('solduni')
+        WorkShopUniForm.objects.get(pk=solduni).delete()
+    return render(request,"sellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc,'uniform':current_user_uni})
 
 
 def CalcForm(request):

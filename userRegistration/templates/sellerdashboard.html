@@ -121,7 +121,7 @@
         <b>note: </b>If this book is sold then please Click On <u>SOLD BUTTON</u><br>
         OtherWise, The Buyers may contact you..<br><br>
 
-        <button type="submit" name="sold" value="{{book.pk}}" class="btn btn-primary btn-lg">Sold</button>
+        <button type="submit" name="soldclac" value="{{book.pk}}" class="btn btn-primary btn-lg">Sold</button>
             </span>
             
 			<span class="card-meta">
@@ -132,6 +132,29 @@
     </div>
       {%endfor%}
 	
+      {%for book in current_user_uni%}
+		<a class="card" href="#">
+      <img media src="/media/{{book.image}}"/>
+			<span class="card-header" >
+				<span class="card-title">
+					<h3><u>{{book.price}}</u>--  <b>Rs.{{book.size}}</b></h3>
+				</span>
+			</span>
+			<span class="card-summary">
+        You are trying to Sell this Book....<br>
+        <b>note: </b>If this book is sold then please Click On <u>SOLD BUTTON</u><br>
+        OtherWise, The Buyers may contact you..<br><br>
+
+        <button type="submit" name="solduni" value="{{book.pk}}" class="btn btn-primary btn-lg">Sold</button>
+            </span>
+            
+			<span class="card-meta">
+        {{book.price}}, {{book.modelName}}
+      </span>
+    </a>
+    <div>
+    </div>
+      {%endfor%}
 
 		
 	</div>
