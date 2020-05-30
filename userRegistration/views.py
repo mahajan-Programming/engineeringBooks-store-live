@@ -5,11 +5,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     a=0
+    name = 'anonymous'
     try:
-        UserPersonalInfo.objects.get(username= request.user)
+       name = UserPersonalInfo.objects.get(username= request.user)
     except:
         a=1
-    return render(request,"index.html",{'check':a})
+    return render(request,"index.html",{'check':a,'n':name})
 
 from .forms import RegisterForm,UserInfoForm,UserNewBook,AddCalc,AddWorkshopUni,AddFile
 from userRegistration.models import Calc, File, WorkShopUniForm
@@ -37,7 +38,7 @@ def userInfoFrom(request):
         user = userinfo.save(commit=False)
         user.username=request.user
         userinfo.save()
-        return redirect('index')
+        return redirect('sellerdash')
     return render(request,"UserInfoForm.html",{'userinfo':userinfo})
 
 @login_required

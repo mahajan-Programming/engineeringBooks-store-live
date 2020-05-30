@@ -25,7 +25,10 @@
     {%endif %}
   </div>
 </div>
-
+<div id="header">
+  <h1>👋  <br>Hello {{n.username.first_name}} !</h1>
+  <p></p>
+</div>
 <div class="container">
   <a href="{%url 'searchbooks'%}"><button class="follow-button"><svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
@@ -201,6 +204,19 @@
     }
   }
   
+
+
+
+
+
+
+
+  #header{
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+  }
 </style>
 {%endblock style%}
 
