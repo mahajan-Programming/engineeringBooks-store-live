@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't6_@lhkba4ne0g3e6y4#xxz8nowhf&*8cr0ij+(!b3$f3p%*h0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['buy-n--sell.herokuapp.com','127.0.0.1']
 
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'userRegistration',    
     "crispy_forms",
+    'storages',
 
 ]
 
@@ -136,3 +137,17 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
 
+
+
+AWS_ACCESS_KEY_ID = 'AKIASP2GXDQFKSH7GPFW'
+
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'django-buy-n--sell-files'
+
+AWS_S3_FILE_OVERWRITE = True
+
+AWS_DEFAULT_ACL = None
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

@@ -85,7 +85,7 @@
 	<div class="cards">
     {%for book in books%}
 		<a class="card" href="#">
-      <img media src="/media/{{book.BookImage}}"/>
+      <img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}"/>
 			<span class="card-header" >
 				<span class="card-title">
 					<h3><u>{{book.BookName}}</u>--  <b>Rs.{{book.Price}}</b></h3>
