@@ -110,7 +110,7 @@
       
       {%for book in current_user_calc%}
 		<a class="card" href="#">
-      <img media src="/media/{{book.BookImage}}"/>
+      <img media src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.CalcPic}}"/>
 			<span class="card-header" >
 				<span class="card-title">
 					<h3><u>{{book.price}}</u>--  <b>Rs.{{book.modelName}}</b></h3>
@@ -134,7 +134,7 @@
 	
       {%for book in current_user_uni%}
 		<a class="card" href="#">
-      <img media src="/media/{{book.image}}"/>
+      <img media src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.image}}"/>
 			<span class="card-header" >
 				<span class="card-title">
 					<h3><u>{{book.price}}</u>--  <b>Rs.{{book.size}}</b></h3>

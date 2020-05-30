@@ -27,7 +27,8 @@ class UserNewBook(ModelForm):
         fields=['BookName','Price','Year','Tag1','Tag2','BookImage']
         labels = {
             'Year':"Book's Publish Year ?",
-            'Tag1': "Book's Branch ?"         
+            'Tag1': "Book's Branch ?"       ,
+            'Tag2': "Semister"  ,
             }
 
 class AddCalc(ModelForm):

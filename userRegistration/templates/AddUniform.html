@@ -18,13 +18,15 @@
 </head>
 
 <body>
-    <form method="POST"  enctype="multipart/form-data"  style="width: 15cm; margin:auto; border: 3px solid rgb(59, 199, 241);  padding: 20px;
+    <h2 class="display-3 p-3 mb-2 bg-info text-primary " style="padding: 10px;">Add WorkShop Labcoat...</h2>
+
+    <form method="POST"  enctype="multipart/form-data"  style="width: 9cm; margin:auto; border: 1px solid ;  padding: 20px;
     ">
         {% csrf_token %}
 
         {{new|crispy}}
 
-        <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
+        <button class="btn btn-lg btn-primary" type="submit">Submit Details</button>
 
     </form>
 </body>

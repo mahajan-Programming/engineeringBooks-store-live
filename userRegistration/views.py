@@ -4,16 +4,22 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    return render(request,"index.html",{})
+    a=0
+    try:
+        UserPersonalInfo.objects.get(username= request.user)
+    except:
+        a=1
+    return render(request,"index.html",{'check':a})
 
 from .forms import RegisterForm,UserInfoForm,UserNewBook,AddCalc,AddWorkshopUni,AddFile
 from userRegistration.models import Calc, File, WorkShopUniForm
 
 
 # Create your views here.
-def register(response):
-    if response.method == "POST":
-	    form = RegisterForm(response.POST)
+def register(request):
+    if request.method == "POST":
+	    form = RegisterForm(request.POST)
+
 	    if form.is_valid():
 	        form.save()
 
@@ -21,7 +27,7 @@ def register(response):
     else:
 	    form = RegisterForm()
 
-    return render(response, "register.html", {"form":form})
+    return render(request, "register.html", {"form":form})
 
 
 @login_required
@@ -42,7 +48,7 @@ def NewBookForm(request):
         current_user= UserPersonalInfo.objects.get(username=request.user)
         n.BookOwner=current_user
         new.save()
-        return redirect('index')
+        return redirect('sellerdash')
 
     return render(request,"NewBook.html",{'new':new})
 
@@ -69,7 +75,7 @@ def sellerDashBoard(request):
     current_user = UserPersonalInfo.objects.get(username = request.user)
     current_user_books =  NewBook.objects.filter(BookOwner = current_user)
     current_user_calc = Calc.objects.filter(CalcOwner = current_user)
-    current_user_uni = WorkShopUniForm.filter(CalcOwner = current_user)
+    current_user_uni = WorkShopUniForm.objects.filter(CalcOwner = current_user)
     if request.method == 'POST':
         soldBook = request.POST.get('sold')
         NewBook.objects.get(pk=soldBook).delete()
