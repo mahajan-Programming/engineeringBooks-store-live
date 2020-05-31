@@ -11,7 +11,9 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields=['username','first_name','last_name','email','password1','password2']
-
+        labels={
+            'username':'Username as "Yourname and Birthdate" ....for ex.--> "  jhon07-03-2000  " ',
+        }
 
 class UserInfoForm(ModelForm):
     class Meta:
@@ -58,4 +60,3 @@ class AddFile(ModelForm):
     class Meta:
         model=File
         fields=['pdf','Subject_and_Topic','Branch','Semister','Type','Unit']
-        

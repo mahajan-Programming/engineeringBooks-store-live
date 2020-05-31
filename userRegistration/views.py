@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import UserPersonalInfo,NewBook
+from .models import UserPersonalInfo,NewBook,User
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -22,8 +22,12 @@ def register(request):
 	    form = RegisterForm(request.POST)
 
 	    if form.is_valid():
-	        form.save()
-
+	        new_user=form.save()
+            # username = form.cleaned_data['username']
+            # if User.objects.filter(username=username).exists():
+            #     context= {'form': form, 'error':'The username you entered has already been taken. Please try another username.'}
+            #     return render(request, "register.html", context)
+        
 	    return redirect("index")
     else:
 	    form = RegisterForm()
