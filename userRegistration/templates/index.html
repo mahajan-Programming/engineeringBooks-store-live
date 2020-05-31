@@ -36,14 +36,14 @@
 <div class="content">
   <div class="content__container">
     <p class="content__container__text">
-      B&S
+      <h6>Buy&Sell</h6>
     </p>
     
     <ul class="content__container__list">
-      <li class="content__container__list__item"><b>Labcoat !</b></li>
-      <li class="content__container__list__item">Calculator!</li>
-      <li class="content__container__list__item">Books !</li>
-      <li class="content__container__list__item">With fun !</li>
+      <a href="{%url 'unicards'%}" style="color:#fbd897"><li class="content__container__list__item"><b>Labcoat !</b></li></a>
+      <a href="{%url 'unicards'%}" style="color:#fbd897"><li class="content__container__list__item">Calculator!</li></a>
+      <a href="{%url 'searchbooks'%}" style="color:#fbd897"><li class="content__container__list__item">Books !</li></a>
+      <a href="" style="color:#fbd897"><li class="content__container__list__item">With fun !</li></a>
     </ul>
   </div>
 </div>
@@ -54,7 +54,7 @@
   <a href="{%url 'searchbooks'%}"><button class="follow-button"><svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
     <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-  </svg><br>Search Books</button></a>
+  </svg><br>Buy Books...</button></a>
   {%if check is 0%}
   <a href="{%url 'sellerdash'%}"><button class="subscribe-button">
     <svg class="bi bi-box-arrow-in-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

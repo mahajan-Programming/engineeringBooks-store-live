@@ -23,6 +23,7 @@ def register(request):
 
 	    if form.is_valid():
 	        new_user=form.save()
+            
             # username = form.cleaned_data['username']
             # if User.objects.filter(username=username).exists():
             #     context= {'form': form, 'error':'The username you entered has already been taken. Please try another username.'}
