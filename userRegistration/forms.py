@@ -17,7 +17,9 @@ class UserInfoForm(ModelForm):
     class Meta:
         model= UserPersonalInfo
         fields=['PhoneNo','City','Institute','SubUrb']
-            
+        labels={
+            'SubUrb':"Your Area/Locality/Chowk"
+        }
         
 
 
@@ -29,19 +31,31 @@ class UserNewBook(ModelForm):
             'Year':"Book's Publish Year ?",
             'Tag1': "Book's Branch ?"       ,
             'Tag2': "Semister"  ,
+            'BookName':"Book Name",
+            'BookImage':"Book Image",
             }
 
 class AddCalc(ModelForm):
     class Meta:
         model = Calc
         fields = ['CalcPic','price','modelName']
-
+        labels={
+            'CalcPic': "Calculator Picture",
+            'modelName': "Model Name",
+            'price':"Price"
+        }
 class AddWorkshopUni(ModelForm):
     class Meta:
         model = WorkShopUniForm
         fields = ['image','size','price']
+        labels={
+            'image':"Labcoat Picture",
+            'size':"Size",
+            'price':"Price"
+        }
 
 class AddFile(ModelForm):
     class Meta:
         model=File
         fields=['pdf','Subject_and_Topic','Branch','Semister','Type','Unit']
+        

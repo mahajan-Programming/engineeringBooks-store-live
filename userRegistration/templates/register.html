@@ -20,19 +20,17 @@
 <body>
     <h2 class="display-3 p-3 mb-2 bg-info text-primary " style="padding: 10px;">User Registration...</h2>
 
-    <form method="POST" style="width: 9cm; margin:auto; border: 1px solid ;  padding: 20px;
+    <form method="POST" style="width: 9cm; margin:auto; border: 0px solid ;  padding: 20px;
     ">
         {% csrf_token %}
 
         {{form|crispy}}
-
+        <div style="display: flex;">
         <button class="btn btn-lg btn-primary" type="submit">Sign up</button>
-
+        <a href="{%url 'loginform'%}" style="margin-left: 38%;" ><button type="button" class="btn btn-lg btn-light">Login</button></a>
+        </div>
     </form>
-    <div style="text-align: center;">
-        <h2>OR</h2>
-    <a href="{%url 'loginform'%}"><button class="btn btn-lg btn-primary">Login</button></a>
-    </div>
+    
 </body>
 
 </html>
