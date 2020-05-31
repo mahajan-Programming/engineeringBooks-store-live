@@ -138,3 +138,6 @@ def FileForm(request):
 def ShowFileFolder(request,branch):
     files = File.objects.all()
     return render(request,"FileFolder.html",{'branch':branch,'files':files})
+
+def Test12(request):
+    return render(request,"test.html",{})

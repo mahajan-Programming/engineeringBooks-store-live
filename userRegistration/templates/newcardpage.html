@@ -404,13 +404,13 @@ section.pricing {
       <div class="download-card__content-box">
         <div class="content">
           <h2 class="download-card__content-box__catagory">{{book.Tag1}} & {{book.Tag2}}</h2>
-          <h5 class="card-title text-muted text-uppercase text-center" style="color: rgb(34, 40, 134);" ><b>{{book.BookName}},<br> Publisher</b> </h5>
+          <h4 class="card-title text-muted text-uppercase text-center" style="color: rgb(34, 40, 134);" ><b>{{book.BookName}},<br> Publisher</b> </h4>
 
             <h3 class="card-price text-center ">Rs. {{book.Price}}/-<span class="period"></span></h3>
 
-          <p class="download-card__content-box__description ">{{book.BookOwner.Institute}}, {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</p>
+          <p class="download-card__content-box__description ">{{book.BookOwner.Institute}},<br><h4>Locality.. {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</h4></p>
           <a  href="tel:{{book.BookOwner.PhoneNo}}" class="button"> <i class="fa fa-cloud-download"></i> Call {{book.BookOwner.PhoneNo}}</a>
-          <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book&phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
+          <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
 
         </div>
       </div>

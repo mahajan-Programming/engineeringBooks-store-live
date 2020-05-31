@@ -12,11 +12,12 @@
 {%for calc in calculator%}
 <div class="card">
     <div class="card_image">
-      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
+      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}" alt="card 1">
     </div>
     <div class="card_content">
       <h2>{{calc.modelName}},{{calc.price}}</h2>
-      <h5><a href="tel:{{calc.CalcOwner.PhoneNo}}">7709559035</a></h5>
+      <h5><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{calc.modelName}} Rs. {{calc.price}}/-* Please contact me if you want to Sell &phone=+91{{calc.CalcOwner.PhoneNo}}">Whatsapp :{{calc.CalcOwner.PhoneNo}}</a></h5>
+      <h5><a href="tel:{{calc.CalcOwner.PhoneNo}}">Call: 7709559035</a></h5>
       <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
     </div>
   </div>
@@ -26,115 +27,31 @@
 {%for uni in uniform%}
   <div class="card">
     <div class="card_image">
-      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
+      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}" alt="card 1">
     </div>
     <div class="card_content">
       <h2>{{uni.size}}, {{uni.price}} </h2>
-      <h5><a href="tel:{{uni.CalcOwner.PhoneNo}}">7709559035</a></h5>
+      <h5><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your Labcoat *{{uni.size}} Rs. {{uni.price}}/-* Please contact me if you want to Sell &phone=+91{{uni.CalcOwner.PhoneNo}}">Whatsapp :{{uni.CalcOwner.PhoneNo}}</a></h5>
+      <h5><a href="tel:{{uni.CalcOwner.PhoneNo}}">Call: {{uni.CalcOwner.PhoneNo}}</a></h5>
       <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
     </div>
   </div>
 {%endfor%}
 
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 2">
-    </div>
-    <div class="card_content">
-      <h2>Waterfall</h2>
-      <p>If you want some refreshments after the hike, there are good restaurants just a short drive away.</p>
-    </div>
+<div class="polaroid">
+  <img src="https://cdn.spacetelescope.org/archives/images/wallpaper2/heic2007a.jpg" alt="5 Terre" style="width:100%">
+  <div class="container">
+  <p>Cinque Terre</p>
+  <h1>sdsds</h1>
   </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 3">
-    </div>
-    <div class="card_content">
-      <h2>Destination</h2>
-      <p>Examples of destination destination Figure 1 also differentiates between alternative ways out (destinations).</p>
-    </div>
+</div>
+
+<div class="polaroid">
+  <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="Norther Lights" style="width:100%">
+  <div class="container">
+  <p>Northern Lights</p>
   </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
-    </div>
-    <div class="card_content">
-      <h2>Tropical</h2>
-      <p>Tropicality" refers to the geographic imagery that many people outside the tropics have of that region.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 2">
-    </div>
-    <div class="card_content">
-      <h2>Waterfall</h2>
-      <p>If you want some refreshments after the hike, there are good restaurants just a short drive away.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 3">
-    </div>
-    <div class="card_content">
-      <h2>Destination</h2>
-      <p>Examples of destination destination Figure 1 also differentiates between alternative ways out (destinations).</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
-    </div>
-    <div class="card_content">
-      <h2>Tropical</h2>
-      <p>Tropicality" refers to the geographic imagery that many people outside the tropics have of that region.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 2">
-    </div>
-    <div class="card_content">
-      <h2>Waterfall</h2>
-      <p>If you want some refreshments after the hike, there are good restaurants just a short drive away.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 3">
-    </div>
-    <div class="card_content">
-      <h2>Destination</h2>
-      <p>Examples of destination destination Figure 1 also differentiates between alternative ways out (destinations).</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
-    </div>
-    <div class="card_content">
-      <h2>Tropical</h2>
-      <p>Tropicality" refers to the geographic imagery that many people outside the tropics have of that region.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 2">
-    </div>
-    <div class="card_content">
-      <h2>Waterfall</h2>
-      <p>If you want some refreshments after the hike, there are good restaurants just a short drive away.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card_image">
-      <img src="https://images.pexels.com/photos/3225531/pexels-photo-3225531.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 3">
-    </div>
-    <div class="card_content">
-      <h2>Destination</h2>
-      <p>Examples of destination destination Figure 1 also differentiates between alternative ways out (destinations).</p>
-    </div>
-  </div>
+</div>
 </body>
 {%endblock body%}
 
@@ -173,75 +90,21 @@
 
 
 
+  body {margin:25px;}
 
+  div.polaroid {
+    width: 80%;
+    background-color: white;
+    border-radius: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+  }
+  
+  div.container {
+    text-align: center;
+    padding: 10px 20px;
+  }
 
-
-
-
-
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap');
-    body {
-      font-family: 'Open Sans', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-
-      justify-content: center;
-      align-items: center;
-     background-color: #ccd7e8;
-    }
-    
-    div.card {
-      margin: 10px;
-      width: 300px;
-      height: 300px;
-      background-color: white;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    
-    .card_image {
-      position: relative;
-      width: 100%;
-      height: 50%;
-      overflow: hidden;
-      transition: 1s;
-      border-bottom: 2px solid yellow;
-    }
-    
-    .card_image:before {
-      content: ' ';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.103);
-      display: block;
-      opacity: 0.4;
-      transition: 0.8s;
-    }
-    
-    .card_image:hover::before {
-      opacity: 0;
-    }
-    
-    
-    .card_image img {
-      width: 200px;
-    }
-    
-    h2, p {
-      margin: 5px 10px;
-    }
-    
-    h2 {
-      font-weight: 800;
-      font-size: 22px;
-    }
-    
-    p {
-      font-size: 12px;
-    }
 
 </style>
 {%endblock style%}
