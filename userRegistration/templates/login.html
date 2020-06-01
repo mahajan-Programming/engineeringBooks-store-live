@@ -20,7 +20,7 @@
 <body>
     <h2 class="display-3 p-3 mb-2 bg-info text-primary " style="padding: 10px;">User Login...</h2>
 
-    <form method="POST" style="width: 9cm; margin:auto;  padding: 20px;
+    <form method="POST" onsubmit="myFunction()" style="width: 9cm; margin:auto;  padding: 20px;
     ">
         {% csrf_token %}
         <h6>HINT: username => jhon07-03-2000</h6>
@@ -31,7 +31,11 @@
         </div>
 
     </form>
-   
+    <div id="overlay" style="display:none;">
+        <div class="spinner"></div>
+        <br/>
+        Loading...
+    </div>
 </body>
 
 </html>
@@ -40,4 +44,54 @@
 {% block script %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+
+    function myFunction() {
+        $('#overlay').fadeIn()
+      }
+    
+</script>
 {%endblock%}
+
+
+
+{%block style%}
+<style>
+    #overlay {
+        background: #ffffff;
+        color: #666666;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        float: left;
+        text-align: center;
+        padding-top: 25%;
+        opacity: .80;
+      }
+      button {
+        margin: 40px;
+        padding: 5px 20px;
+        cursor: pointer;
+      }
+      .spinner {
+          margin: 0 auto;
+          height: 64px;
+          width: 64px;
+          animation: rotate 0.8s infinite linear;
+          border: 5px solid firebrick;
+          border-right-color: transparent;
+          border-radius: 50%;
+      }
+      @keyframes rotate {
+          0% {
+              transform: rotate(0deg);
+          }
+          100% {
+              transform: rotate(360deg);
+          }
+      }
+</style>
+{%endblock style%}

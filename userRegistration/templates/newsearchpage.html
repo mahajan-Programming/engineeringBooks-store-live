@@ -54,12 +54,20 @@
       Get Books</button>
   </div></form>
 
-  <a href="{%url 'unicards'%}"><button type="button" class="btn btn-default" >Get Calculator And Uniform</button>
- 
+<a href="{%url 'unicards'%}"><button type="button" class="btn btn-default" >Get Calculator And Uniform</button>
+
+
+
+  
+  
     <span class="sel__placeholder sel__placeholder--black-panther"></span>
     
   
-  
+    <div id="overlay" style="display:none;">
+      <div class="spinner"></div>
+      <br/>
+      Loading...
+  </div>
   
   
   
@@ -72,6 +80,50 @@
 {%endblock body%}
 {%block style%}
 <style>
+
+
+
+
+  #overlay {
+    background: #ffffff;
+    color: #666666;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    top: 0;
+    left: 0;
+    float: left;
+    text-align: center;
+    padding-top: 25%;
+    opacity: .80;
+  }
+ 
+  .spinner {
+      margin: 0 auto;
+      height: 64px;
+      width: 64px;
+      animation: rotate 0.8s infinite linear;
+      border: 5px solid rgb(28, 81, 255);
+      border-right-color: transparent;
+      border-radius: 50%;
+  }
+  @keyframes rotate {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+  }
+
+
+
+
+
+
+
+
     /* ===== Resets and Housekeeping ===== */
 * {
   padding: 0;
@@ -285,6 +337,21 @@ $('.sel__box__options').click(function() {
   var $currentSel = $(this).closest('.sel');
   $currentSel.children('.sel__placeholder').text(txt);
   $currentSel.children('select').prop('selectedIndex', index + 1);
+});
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+	$('button').click(function(){
+		$('#overlay').fadeIn().delay(10000).fadeOut();
+	});
 });
 
 </script>

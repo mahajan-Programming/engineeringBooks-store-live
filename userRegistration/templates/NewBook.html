@@ -21,24 +21,78 @@
     <h2 class="display-3 p-3 mb-2 bg-info text-primary " style="padding: 10px;">Add New Book...</h2>
 
     <form method="POST"  enctype="multipart/form-data" style="width: 9cm; margin:auto; border: 0px solid ;  padding: 20px;
-    ">
+    " onsubmit="myFunction()">
         {% csrf_token %}
 
         {{new|crispy}}
 
-        <button class="btn btn-lg btn-primary " type="submit">Submit Details</button>
+        <button class="btn btn-lg btn-primary " id="123" type="submit">Submit Details</button>
 
     </form>
+
+    <div id="overlay" style="display:none;">
+        <div class="spinner"></div>
+        <br/>
+        Loading...
+    </div>
 </body>
 
 </html>
-{% endblock %}
+{% endblock body %}
 
 {% block script %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-{%endblock%}
+<script>
+
+    window.addEventListener('load', (event) => {
+
+        $('#overlay').fadeIn().delay(0000).fadeOut();
+
+    });
+    function myFunction() {
+        $('#overlay').fadeIn()
+      }
+</script>
+{%endblock script%}
 
 {%block style%}
-<style></style>
+<style>
+    #overlay {
+        background: #ffffff;
+        color: #666666;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 5000;
+        top: 0;
+        left: 0;
+        float: left;
+        text-align: center;
+        padding-top: 25%;
+        opacity: .80;
+      }
+      button {
+        margin: 40px;
+        padding: 5px 20px;
+        cursor: pointer;
+      }
+      .spinner {
+          margin: 0 auto;
+          height: 64px;
+          width: 64px;
+          animation: rotate 0.8s infinite linear;
+          border: 5px solid firebrick;
+          border-right-color: transparent;
+          border-radius: 50%;
+      }
+      @keyframes rotate {
+          0% {
+              transform: rotate(0deg);
+          }
+          100% {
+              transform: rotate(360deg);
+          }
+      }
+</style>
 {%endblock style%}
