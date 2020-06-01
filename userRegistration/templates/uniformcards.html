@@ -18,7 +18,7 @@
   {%for calc in calculator%}
 
   <div class="grid__item">
-    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPi}}" alt="Calculator pic">
+    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}" alt="Calculator pic">
       <div class="card__content">
         <h1 class="card__header">{{calc.modelName}},{{calc.price}}</h1>
         <p class="card__text">{{calc.CalcOwner.Institute}}<br><strong>{{calc.CalcOwner.SubUrb}}</strong>-{{calc.CalcOwner.City}} </p>
