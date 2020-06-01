@@ -2,56 +2,60 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="An example pen showing how a basic CSS Grid container can create a nice, responsive card layout.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Calculator & Labcoat</title>
 </head>
 <body>
   <div style="width: 100%;">
-    <h1>Calculator & Uniform</h1>
+    <h1>Calculator & Workshop Coat</h1>
+</div>
+<br><br><br>
+
+<div class="grid">
+  {%for calc in calculator%}
+
+  <div class="grid__item">
+    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPi}}" alt="Calculator pic">
+      <div class="card__content">
+        <h1 class="card__header">{{calc.modelName}},{{calc.price}}</h1>
+        <p class="card__text">{{calc.CalcOwner.Institute}}<br><strong>{{calc.CalcOwner.SubUrb}}</strong>-{{calc.CalcOwner.City}} </p>
+        <button class="card__btn"><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{calc.modelName}} Rs. {{calc.price}}/-* Please contact me if you want to Sell &phone=+91{{calc.CalcOwner.PhoneNo}}">Whatsapp: {{calc.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
+        <button class="card__btn"><a href="tel:{{calc.CalcOwner.PhoneNo}}">Call:  {{calc.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button>
+
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+  {%for uni in uniform%}
+
+  <div class="grid__item">
+    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}" >
+      <div class="card__content">
+        <h1 class="card__header">{{uni.size}}, {{uni.price}}</h1>
+        <p class="card__text">{{uni.CalcOwner.Institute}}<br><strong>{{uni.CalcOwner.SubUrb}}</strong>-{{uni.CalcOwner.City}} </p>
+        <button class="card__btn"><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your Labcoat *{{uni.size}} Rs. {{uni.price}}/-* Please contact me if you want to Sell &phone=+91{{uni.CalcOwner.PhoneNo}}">Whatsapp :{{uni.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
+        <button class="card__btn"><a href="tel:{{uni.CalcOwner.PhoneNo}}">Call:{{uni.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button>
+
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+  
 </div>
 
-{%for calc in calculator%}
-<div class="card">
-    <div class="card_image">
-      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPi}}" alt="card 1">
-    </div>
-    <div class="card_content">
-      <h2>{{calc.modelName}},{{calc.price}}</h2>
-      <h5><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{calc.modelName}} Rs. {{calc.price}}/-* Please contact me if you want to Sell &phone=+91{{calc.CalcOwner.PhoneNo}}">Whatsapp :{{calc.CalcOwner.PhoneNo}}</a></h5>
-      <h5><a href="tel:{{calc.CalcOwner.PhoneNo}}">Call: 7709559035</a></h5>
-      <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
-    </div>
-  </div>
-{%endfor%}
 
 
-{%for uni in uniform%}
-  <div class="card">
-    <div class="card_image">
-      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}" alt="card 1">
-    </div>
-    <div class="card_content">
-      <h2>{{uni.size}}, {{uni.price}} </h2>
-      <h5><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your Labcoat *{{uni.size}} Rs. {{uni.price}}/-* Please contact me if you want to Sell &phone=+91{{uni.CalcOwner.PhoneNo}}">Whatsapp :{{uni.CalcOwner.PhoneNo}}</a></h5>
-      <h5><a href="tel:{{uni.CalcOwner.PhoneNo}}">Call: {{uni.CalcOwner.PhoneNo}}</a></h5>
-      <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
-    </div>
-  </div>
-{%endfor%}
 
-<div class="polaroid">
-  <img src="https://cdn.spacetelescope.org/archives/images/wallpaper2/heic2007a.jpg" alt="5 Terre" style="width:100%">
-  <div class="container">
-  <p>Cinque Terre</p>
-  <h1>sdsds</h1>
-  </div>
-</div>
 
-<div class="polaroid">
-  <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="Norther Lights" style="width:100%">
-  <div class="container">
-  <p>Northern Lights</p>
-  </div>
-</div>
+
+
+
+
+
+
 </body>
 {%endblock body%}
 
@@ -89,23 +93,105 @@
 
 
 
-
-  body {margin:25px;}
-
-  div.polaroid {
-    max-width: 400px;
-    width: 80%;
-    background-color: white;
-    border-radius: 30%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
   }
   
-  div.container {
-    text-align: center;
-    padding: 10px 20px;
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%;
   }
+  
+  body {
+    display: flex;
+    flex-wrap: wrap;
 
+    justify-content: center;
+    align-content: center;
+    padding: 6rem;
+    background-color: #f5f5f5;
+    font-family: "Inter", sans-serif;
+  }
+  @media (max-width: 60em) {
+    body {
+      padding: 3rem;
+    }
+  }
+  
+  .grid {
+    display: grid;
+    width: 114rem;
+    grid-gap: 6rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    align-items: start;
+  }
+  @media (max-width: 60em) {
+    .grid {
+      grid-gap: 3rem;
+    }
+  }
+  .grid__item {
+    background-color: #fff;
+    border-radius: .4rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .grid__item:hover {
+    transform: translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .card__img {
+    display: block;
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+  }
+  .card__content {
+    padding: 3rem 3rem;
+  }
+  .card__header {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 1.5rem;
+  }
+  .card__text {
+    font-size: 1.5rem;
+    letter-spacing: .1rem;
+    line-height: 1.7;
+    color: #3d3d3d;
+    margin-bottom: 2.5rem;
+  }
+  .card__btn {
+    display: block;
+    width: 100%;
+    padding: 1.0rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #3363ff;
+    background-color: #e6ecff;
+    border: none;
+    border-radius: .4rem;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .card__btn span {
+    margin-left: 1rem;
+    transition: 0.2s;
+  }
+  .card__btn:hover, .card__btn:active {
+    background-color: #dce4ff;
+  }
+  .card__btn:hover span, .card__btn:active span {
+    margin-left: 1.5rem;
+  }
 
 </style>
 {%endblock style%}
