@@ -12,7 +12,7 @@
 {%for calc in calculator%}
 <div class="card">
     <div class="card_image">
-      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}" alt="card 1">
+      <img src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPi}}" alt="card 1">
     </div>
     <div class="card_content">
       <h2>{{calc.modelName}},{{calc.price}}</h2>
@@ -93,6 +93,7 @@
   body {margin:25px;}
 
   div.polaroid {
+    max-width: 400px;
     width: 80%;
     background-color: white;
     border-radius: 30%;

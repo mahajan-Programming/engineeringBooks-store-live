@@ -98,7 +98,7 @@ def sellerDashBoard(request):
             WorkShopUniForm.objects.get(pk=solduni).delete()
         except:
             pass
-    return render(request,"sellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc,'uniform':current_user_uni})
+    return render(request,"newsellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc,'uniform':current_user_uni})
 
 
 def CalcForm(request):
@@ -140,4 +140,4 @@ def ShowFileFolder(request,branch):
     return render(request,"FileFolder.html",{'branch':branch,'files':files})
 
 def Test12(request):
-    return render(request,"test.html",{})
+    return render(request,"newsellerdashboard.html",{})
