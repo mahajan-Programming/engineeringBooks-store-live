@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'userRegistration',    
     "crispy_forms",
     'storages',
+    'import_export',
 
 ]
 
