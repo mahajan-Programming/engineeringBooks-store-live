@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'import_export',
     'userRegistration',    
     "crispy_forms",
     'storages',
-    'import_export',
+    
 
 ]
 
