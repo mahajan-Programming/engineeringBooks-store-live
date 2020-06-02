@@ -38,6 +38,7 @@ def register(request):
 
 @login_required
 def userInfoFrom(request):
+    information=0
     try:
         information=UserPersonalInfo.objects.get(username=request.user)
     except:
