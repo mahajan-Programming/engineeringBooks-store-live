@@ -6,6 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
 
@@ -70,11 +71,37 @@
   </div>
   
   
-  
+  <br><br><br><br>
 
 
 
-
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+      <div class="mobile-bottom-nav__item-content">
+        <a href="{%url 'index'%}"><i class="material-icons">home</i></a>
+        one
+      </div>		
+    </div>
+    <div class="mobile-bottom-nav__item">		
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">mail</i>
+        two
+      </div>
+    </div>
+    <div class="mobile-bottom-nav__item">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">person</i>
+        three
+      </div>		
+    </div>
+    
+    <div class="mobile-bottom-nav__item">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">phone</i>
+        four
+      </div>		
+    </div>
+  </nav>
 
 
 {%endblock body%}
@@ -215,15 +242,16 @@ body {
   display: none;
   list-style-type: none;
   text-align: left;
-  font-size: 1em;
+  font-size: 1.0em;
   background-color: #FFF;
   width: calc(100% + 8px);
   box-sizing: border-box;
+  padding-bottom: 50px;
 }
 
 .sel.active .sel__box {
   display: block;
-  animation: fadeInUp 80ms;
+  animation: fadeInUp 60ms;
 }
 
 .sel__box__options {
@@ -288,10 +316,79 @@ body {
     opacity: 0;
   }
 }
+
+
+
+
+
+
+
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  display: -webkit-box;
+  display: flex;
+  height: 50px;
+  box-shadow: 0 -2px 5px -2px #333;
+  background-color: #fff;
+}
+.mobile-bottom-nav__item {
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+  text-align: center;
+  font-size: 10px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+.mobile-bottom-nav__item--active {
+  color: red;
+}
+.mobile-bottom-nav__item-content {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
 </style>
 {%endblock style%}
 {%block script%}
 <script>
+
+
+
+/* bottom nav bar*/
+var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
+navItems.forEach(function(e, i) {
+	e.addEventListener("click", function(e) {
+		navItems.forEach(function(e2, i2) {
+			e2.classList.remove("mobile-bottom-nav__item--active");
+		})
+		this.classList.add("mobile-bottom-nav__item--active");
+	});
+});
+
+
+
+
+
+
+
+
+
+
+
 /* ===== Logic for creating fake Select Boxes ===== */
 $('.sel').each(function() {
   $(this).children('select').css('display', 'none');

@@ -1,6 +1,8 @@
 {%block body%}
 <title>Buy & Sell</title>
-<head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+</head>
 <div class="nav" style="z-index:1">
   <input type="checkbox" id="nav-check">
   <div class="nav-header">
@@ -81,9 +83,91 @@
       </svg><br>Sell Books...<h6>calculator, Labcoat</h6></button></a>
     {%endif%}
 </div>
+
+
+<br><br>
+
+
+
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+      <div class="mobile-bottom-nav__item-content">
+        <a href="{%url 'index'%}"><i class="material-icons">home</i></a>
+        one
+      </div>		
+    </div>
+    <div class="mobile-bottom-nav__item">		
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">mail</i>
+        two
+      </div>
+    </div>
+    <div class="mobile-bottom-nav__item">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">person</i>
+        three
+      </div>		
+    </div>
+    
+    <div class="mobile-bottom-nav__item">
+      <div class="mobile-bottom-nav__item-content">
+        <i class="material-icons">phone</i>
+        four
+      </div>		
+    </div>
+  </nav>
 {%endblock body%}
 {%block style%}
 <style>
+
+
+
+/* bottom nav bar*/ 
+
+
+
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    display: -webkit-box;
+    display: flex;
+    height: 50px;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color: #fff;
+  }
+  .mobile-bottom-nav__item {
+    -webkit-box-flex: 1;
+            flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+  .mobile-bottom-nav__item--active {
+    color: red;
+  }
+  .mobile-bottom-nav__item-content {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+  }
+
+
+
+
 
 
   .content {
@@ -388,6 +472,18 @@
 
 {%block script%}
 <script>
+
+
+/* bottom nav bar*/
+var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
+navItems.forEach(function(e, i) {
+	e.addEventListener("click", function(e) {
+		navItems.forEach(function(e2, i2) {
+			e2.classList.remove("mobile-bottom-nav__item--active");
+		})
+		this.classList.add("mobile-bottom-nav__item--active");
+	});
+});
 
 
   
