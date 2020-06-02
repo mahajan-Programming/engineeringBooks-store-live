@@ -25,10 +25,20 @@
         {% csrf_token %}
 
         {{userinfo|crispy}}
-
-        <button class="btn btn-lg btn-primary" type="submit">Submit Info</button>
-
+        
+        <button class="btn btn-lg btn-primary" type="submit">Update Info</button>
+        <br>
+        <br>
+        {%if info%}
+        <u>Your Details:</u>
+        <br>
+        <b>Phone--</b>{{info.PhoneNo}}<br>
+        <b>Locality--</b>{{info.SubUrb}}<br>
+        <b>Institute--</b>{{info.Institute}}<br>
+        <b>City--</b>{{info.City}}<br>
+        {%endif%}
     </form>
+    
 </body>
 <div id="overlay" style="display:none;">
     <div class="spinner"></div>

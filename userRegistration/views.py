@@ -38,13 +38,17 @@ def register(request):
 
 @login_required
 def userInfoFrom(request):
+    try:
+        information=UserPersonalInfo.objects.get(username=request.user)
+    except:
+        pass
     userinfo=UserInfoForm(request.POST)
     if request.method == 'POST':
         user = userinfo.save(commit=False)
         user.username=request.user
         userinfo.save()
         return redirect('sellerdash')
-    return render(request,"UserInfoForm.html",{'userinfo':userinfo})
+    return render(request,"UserInfoForm.html",{'userinfo':userinfo,'info':information})
 
 @login_required
 def NewBookForm(request):
@@ -78,10 +82,26 @@ def NewSearch(request):
 
 @login_required
 def sellerDashBoard(request):
-    current_user = UserPersonalInfo.objects.get(username = request.user)
+    try:
+        if(UserPersonalInfo.objects.all()):
+            current_user = UserPersonalInfo.objects.get(username = request.user)
+
+    except:
+        userinfo=UserInfoForm(request.POST)
+        if request.method == 'POST':
+            user = userinfo.save(commit=False)
+            user.username=request.user
+            userinfo.save()
+            return redirect('sellerdash')
+        return render(request,"UserInfoForm.html",{'userinfo':userinfo})
     current_user_books =  NewBook.objects.filter(BookOwner = current_user)
     current_user_calc = Calc.objects.filter(CalcOwner = current_user)
     current_user_uni = WorkShopUniForm.objects.filter(CalcOwner = current_user)
+    try:
+        if(UserPersonalInfo.objects.all()):
+            pass
+    except:
+        return render(request,)
     if request.method == 'POST':
         try:
             soldBook = request.POST.get('sold')
