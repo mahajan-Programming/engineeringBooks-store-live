@@ -9,7 +9,9 @@
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 {%endblock head%}
@@ -436,7 +438,15 @@ section.pricing {
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
-  <h2 class="show">{{b}} __ {{s}}...</h2>
+  <h2 class="show">
+    
+    {%if b %}
+    {{b}} __ {{s}}...
+    {% else %}
+    No Books Available, Try after Sometime...
+    {%endif%}
+
+  </h2>
   <div class="scrollmenu">
   <a href="{%url 'unicards'%}"><button>Calculator & Uniform</button></a>
   
@@ -455,7 +465,33 @@ section.pricing {
   {%for book in books%}
   <div data-view="list-view" class="download-cards">
     <article class="download-card">
-      <div class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" /></div>
+
+
+      <div    data-toggle="modal" data-target="#myModal"  class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />
+      
+      
+      </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{book.BookName}}</h4>
+        </div>
+        <div class="modal-body">
+          <img width="270" height="300" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
       <div class="download-card__content-box">
         <div class="content">
           <h2 class="download-card__content-box__catagory">{{book.Tag1}} & {{book.Tag2}}</h2>
@@ -482,35 +518,33 @@ section.pricing {
 <br><br>
 
 
-
 <nav class="mobile-bottom-nav">
   <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
     <div class="mobile-bottom-nav__item-content">
       <a href="{%url 'index'%}"><i class="material-icons">home</i></a>
-      one
+      HOME
     </div>		
   </div>
   <div class="mobile-bottom-nav__item">		
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">mail</i>
-      two
+      <a href="{%url 'unicards'%}"><i class="material-icons">inbox wc</i></a>
+      Calc & Labcoat
     </div>
   </div>
   <div class="mobile-bottom-nav__item">
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">person</i>
-      three
+     <a href=""> <i class="material-icons">subscriptions</i></a>
+      Demo
     </div>		
   </div>
   
   <div class="mobile-bottom-nav__item">
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">phone</i>
-      four
+      <a href="{%url 'userinfoform'%}"><i class="material-icons">settings</i></a>
+      Update Profile
     </div>		
   </div>
 </nav>
-
 </body>
 {%endblock body%}
 {%block script%}

@@ -1,6 +1,6 @@
 {%block body%}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=.90">
 <title>Search Books</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -79,31 +79,29 @@
     <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
       <div class="mobile-bottom-nav__item-content">
         <a href="{%url 'index'%}"><i class="material-icons">home</i></a>
-        one
+        HOME
       </div>		
     </div>
     <div class="mobile-bottom-nav__item">		
       <div class="mobile-bottom-nav__item-content">
-        <i class="material-icons">mail</i>
-        two
+        <a href="{%url 'unicards'%}"><i class="material-icons">inbox wc</i></a>
+        Calc & Labcoat
       </div>
     </div>
     <div class="mobile-bottom-nav__item">
       <div class="mobile-bottom-nav__item-content">
-        <i class="material-icons">person</i>
-        three
+       <a href=""> <i class="material-icons">subscriptions</i></a>
+        Demo
       </div>		
     </div>
     
     <div class="mobile-bottom-nav__item">
       <div class="mobile-bottom-nav__item-content">
-        <i class="material-icons">phone</i>
-        four
+        <a href="{%url 'userinfoform'%}"><i class="material-icons">settings</i></a>
+        Profile
       </div>		
     </div>
   </nav>
-
-
 {%endblock body%}
 {%block style%}
 <style>

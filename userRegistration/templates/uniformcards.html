@@ -11,7 +11,7 @@
 </head>
 <body>
   <div style="width: 100%;">
-    <h1>Calculator & Workshop Coat</h1>
+    <h1>Calculator & Workshop Lab-Coat</h1>
 </div>
 <br><br><br>
 
@@ -19,11 +19,11 @@
   {%for calc in calculator%}
 
   <div class="grid__item">
-    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}" alt="Calculator pic">
+    <div class="card"><a href="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{calc.CalcPic}}" alt="Calculator pic"></a>
       <div class="card__content">
         <h1 class="card__header">{{calc.modelName}},{{calc.price}}</h1>
         <p class="card__text">{{calc.CalcOwner.Institute}}<br><strong>{{calc.CalcOwner.SubUrb}}</strong>-{{calc.CalcOwner.City}} </p>
-        <button class="card__btn"><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{calc.modelName}} Rs. {{calc.price}}/-* Please contact me if you want to Sell &phone=+91{{calc.CalcOwner.PhoneNo}}">Whatsapp: {{calc.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
+        <button class="card__btn"><a style="color: rgb(122, 204, 0);" href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{calc.modelName}} Rs. {{calc.price}}/-* Please contact me if you want to Sell &phone=+91{{calc.CalcOwner.PhoneNo}}">Whatsapp: {{calc.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
         <button class="card__btn"><a href="tel:{{calc.CalcOwner.PhoneNo}}">Call:  {{calc.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button>
 
       </div>
@@ -33,11 +33,11 @@
   {%for uni in uniform%}
 
   <div class="grid__item">
-    <div class="card"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}" >
+    <div class="card"><a href="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}"><img class="card__img" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{uni.image}}" ></a>
       <div class="card__content">
         <h1 class="card__header">{{uni.size}}, {{uni.price}}</h1>
         <p class="card__text">{{uni.CalcOwner.Institute}}<br><strong>{{uni.CalcOwner.SubUrb}}</strong>-{{uni.CalcOwner.City}} </p>
-        <button class="card__btn"><a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your Labcoat *{{uni.size}} Rs. {{uni.price}}/-* Please contact me if you want to Sell &phone=+91{{uni.CalcOwner.PhoneNo}}">Whatsapp :{{uni.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
+        <button class="card__btn"><a style="color: rgb(122, 204, 0);" href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your Labcoat *{{uni.size}} Rs. {{uni.price}}/-* Please contact me if you want to Sell &phone=+91{{uni.CalcOwner.PhoneNo}}">Whatsapp :{{uni.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button><br>
         <button class="card__btn"><a href="tel:{{uni.CalcOwner.PhoneNo}}">Call:{{uni.CalcOwner.PhoneNo}}</a> <span>&rarr;</span></button>
 
       </div>
@@ -55,39 +55,33 @@
 <br><br>
 
 
-
 <nav class="mobile-bottom-nav">
   <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
     <div class="mobile-bottom-nav__item-content">
       <a href="{%url 'index'%}"><i class="material-icons">home</i></a>
-      one
+      HOME
     </div>		
   </div>
   <div class="mobile-bottom-nav__item">		
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">mail</i>
-      two
+      <a href="{%url 'unicards'%}"><i class="material-icons">inbox wc</i></a>
+      Calc & Labcoat
     </div>
   </div>
   <div class="mobile-bottom-nav__item">
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">person</i>
-      three
+     <a href=""> <i class="material-icons">subscriptions</i></a>
+      Demo
     </div>		
   </div>
   
   <div class="mobile-bottom-nav__item">
     <div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">phone</i>
-      four
+      <a href="{%url 'userinfoform'%}"><i class="material-icons">settings</i></a>
+      Update UserInfo
     </div>		
   </div>
 </nav>
-
-
-
-
-
 
 </body>
 {%endblock body%}
