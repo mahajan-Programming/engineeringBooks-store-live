@@ -68,6 +68,10 @@ def Test(request):
         branch=request.POST.get('branch')
         sem=request.POST.get('sem')
         books =  NewBook.objects.filter(Tag1=branch,Tag2=sem)
+
+        
+
+       
         return render(request,"newcardpage.html",{'books':books,'b':branch,'s':sem})
     return render(request,"newsearchpage.html",{})
 
@@ -161,4 +165,6 @@ def ShowFileFolder(request,branch):
     return render(request,"FileFolder.html",{'branch':branch,'files':files})
 
 def Test12(request):
-    return render(request,"newsellerdashboard.html",{})
+    return render(request,"allcardsofseller.html",{})
+
+

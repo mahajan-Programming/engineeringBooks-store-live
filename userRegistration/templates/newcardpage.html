@@ -461,13 +461,14 @@ section.pricing {
     <button data-trigger="grid-view"></button>
     <button data-trigger="list-view" class="active"></button>
   </div>
- 
+  <form method="GET">
+    {% csrf_token %}
   {%for book in books%}
   <div data-view="list-view" class="download-cards">
     <article class="download-card">
 
 
-      <div    data-toggle="modal" data-target="#myModal"  class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />
+      <div data-toggle="modal" data-target="#myModal"  class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />
       
       
       </div>
@@ -484,8 +485,10 @@ section.pricing {
           <h4 class="modal-title">{{book.BookName}}</h4>
         </div>
         <div class="modal-body">
-          <img width="270" height="300" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
+          <img width="270" height="" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
         <div class="modal-footer">
+          <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
+
         </div>
       </div>
     </div>
@@ -499,7 +502,13 @@ section.pricing {
 
             <h3 class="card-price text-center ">Rs. {{book.Price}}/-<span class="period"></span></h3>
 
-          <p class="download-card__content-box__description ">{{book.BookOwner.Institute}},<br><h4>Locality.. {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</h4></p>
+          <p class="download-card__content-box__description ">{{book.BookOwner.Institute}},<br><h4>Locality.. {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</h4>
+            
+
+            <a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}"><button type="button" class="btn btn-success">Success</button></a>
+            <button type="submit" name="bookowner" value="{{book.pk}}" class="btn btn-info">See Details</button>
+
+          </p>
           <a  href="tel:{{book.BookOwner.PhoneNo}}" class="button"> <i class="fa fa-cloud-download"></i> Call {{book.BookOwner.PhoneNo}}</a>
           <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
 
@@ -508,7 +517,7 @@ section.pricing {
     </article>
     </div>
     {%endfor%}
-    
+  </form>
   </div>
 </div>
 <!-- partial -->

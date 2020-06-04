@@ -1,5 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from io import BytesIO
+from PIL import Image
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
+
+
 
 # Create your models here.
 class UserPersonalInfo(models.Model):
@@ -42,6 +48,24 @@ class NewBook(models.Model):
     Tag1=models.CharField(max_length=50,choices=branch,default="")
     Tag2=models.CharField(max_length=15,choices=semister,default="")
     BookImage = models.ImageField(blank=True, upload_to='books')
+    def save(self):
+        # Opening the uploaded image
+        im = Image.open(self.BookImage)
+
+        output = BytesIO()
+
+        # Resize/modify the image
+
+        # after modifications, save it to the output
+        im.save(output, format='JPEG', quality=10)
+        output.seek(0)
+
+        # change the imagefield value to be the newley modifed image value
+        self.BookImage = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                        sys.getsizeof(output), None)
+
+        super(NewBook, self).save()
+
     def __str__(self):
         return str(self.pk) + '. ' + self.BookOwner.username.username+ ' ' + self.BookName
 
@@ -51,12 +75,46 @@ class Calc(models.Model):
     CalcPic= models.ImageField(blank=True,upload_to='books') 
     price = models.IntegerField(default=0)
     modelName = models.CharField(max_length=20)
+    def save(self):
+        # Opening the uploaded image
+        im = Image.open(self.CalcPic)
+
+        output = BytesIO()
+
+        # Resize/modify the image
+
+        # after modifications, save it to the output
+        im.save(output, format='JPEG', quality=10)
+        output.seek(0)
+
+        # change the imagefield value to be the newley modifed image value
+        self.CalcPic = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                        sys.getsizeof(output), None)
+
+        super(Calc, self).save()
 
 class WorkShopUniForm(models.Model):
     CalcOwner = models.ForeignKey(UserPersonalInfo,on_delete=models.CASCADE,related_name="UniformOwner")
     image = models.ImageField(upload_to='books')
     size = models.CharField(max_length=4, default='M')
     price = models.IntegerField(default=100)
+    def save(self):
+        # Opening the uploaded image
+        im = Image.open(self.image)
+
+        output = BytesIO()
+
+        # Resize/modify the image
+
+        # after modifications, save it to the output
+        im.save(output, format='JPEG', quality=10)
+        output.seek(0)
+
+        # change the imagefield value to be the newley modifed image value
+        self.image = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                        sys.getsizeof(output), None)
+
+        super(WorkShopUniForm, self).save()
 
 #name of pdf choices pdf, mcq ,q-paper, notes,other,price,branch ,semister-->pdf file
 class File(models.Model):
