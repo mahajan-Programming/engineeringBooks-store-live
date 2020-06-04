@@ -61,7 +61,7 @@ class NewBook(models.Model):
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
-        self.BookImage = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.BookImage.name.split('.')[0], 'image/jpeg',
+        self.BookImage = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
                                         sys.getsizeof(output), None)
 
         super(NewBook, self).save()
@@ -88,7 +88,7 @@ class Calc(models.Model):
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
-        self.CalcPic = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.CalcPic.name.split('.')[0], 'image/jpeg',
+        self.CalcPic = InMemoryUploadedFile(output, 'ImageField', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
                                         sys.getsizeof(output), None)
 
         super(Calc, self).save()
