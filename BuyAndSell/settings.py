@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'userRegistration',    
     "crispy_forms",
     'storages',
+    'django_jinja'
     
 
 ]
@@ -59,7 +60,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'BuyAndSell.urls'
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 TEMPLATES = [
+     { 
+        'BACKEND':'django.template.backends.jinja2.Jinja2',
+        'DIRS': ['%s/jinjatemplates/'% (PROJECT_DIR),],
+        'APP_DIRS': True,
+        },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],

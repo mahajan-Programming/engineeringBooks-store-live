@@ -72,14 +72,14 @@ def Test(request):
         
 
        
-        return render(request,"newcardpage.html",{'books':books,'b':branch,'s':sem})
+        return render(request,"newcardpage.jinja",{'books':books,'b':branch,'s':sem,'a':1})
     return render(request,"newsearchpage.html",{})
 
 def books(request):
     return render(request,"bookscardpage.html",{})
 
 def newbooks(request):
-    return render(request,"newcardpage.html",{})
+    return render(request,"newcardpage.jinja",{})
 
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})

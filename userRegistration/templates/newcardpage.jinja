@@ -461,14 +461,13 @@ section.pricing {
     <button data-trigger="grid-view"></button>
     <button data-trigger="list-view" class="active"></button>
   </div>
-  <form method="GET">
-    {% csrf_token %}
+
   {%for book in books%}
   <div data-view="list-view" class="download-cards">
     <article class="download-card">
 
 
-      <div data-toggle="modal" data-target="#myModal"  class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />
+      <div data-toggle="modal" data-target="#myModal{{book.pk}}"  class="download-card__icon-box"><img  src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />
       
       
       </div>
@@ -477,7 +476,7 @@ section.pricing {
 
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade" id="myModal{{book.pk}}" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
@@ -487,6 +486,12 @@ section.pricing {
         <div class="modal-body">
           <img width="270" height="" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
         <div class="modal-footer">
+          Other Books by seller....<br>
+          {%for b in books%}
+            {%if book.BookOwner == b.BookOwner%}
+            <h4>{{b.BookName}}, Rs.{{b.Price}}/-</h4>
+            {%endif%}
+          {%endfor%}
           <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
 
         </div>
@@ -505,8 +510,20 @@ section.pricing {
           <p class="download-card__content-box__description ">{{book.BookOwner.Institute}},<br><h4>Locality.. {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</h4>
             
 
-            <a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}"><button type="button" class="btn btn-success">Success</button></a>
-            <button type="submit" name="bookowner" value="{{book.pk}}" class="btn btn-info">See Details</button>
+            <a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}"><button type="button" class="btn btn-primary btn-lg active">Buy</button></a>
+            <button data-toggle="collapse" data-target="#demo{{book.pk}}" class="btn btn-secondary btn-lg active">More Books by Seller</button>
+            <div id="demo{{book.pk}}" class="collapse">
+
+              {%for b in books%}
+            {%if book.BookOwner == b.BookOwner%}
+              <div class="panel-footer" style="" >{{b.BookName}}, Rs.{{b.Price}}/-</div>
+
+            {%endif%}
+          {%endfor%}
+            <div class="panel-body"></div>
+            
+
+            </div>
 
           </p>
           <a  href="tel:{{book.BookOwner.PhoneNo}}" class="button"> <i class="fa fa-cloud-download"></i> Call {{book.BookOwner.PhoneNo}}</a>
@@ -517,7 +534,6 @@ section.pricing {
     </article>
     </div>
     {%endfor%}
-  </form>
   </div>
 </div>
 <!-- partial -->
