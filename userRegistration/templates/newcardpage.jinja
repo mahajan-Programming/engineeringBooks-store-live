@@ -510,8 +510,8 @@ section.pricing {
           <p class="download-card__content-box__description ">{{book.BookOwner.Institute}},<br><h4>Locality.. {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</h4>
             
 
-            <a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}"><button type="button" class="btn btn-primary btn-lg active">Buy</button></a>
-            <button data-toggle="collapse" data-target="#demo{{book.pk}}" class="btn btn-secondary btn-lg active">More Books by Seller</button>
+            <a href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}"><button type="button" class="btn btn-primary  active">Buy</button></a>
+            <button data-toggle="collapse" data-target="#demo{{book.pk}}" class="btn btn-secondary active"><h6>More Books by Seller</h6></button>
             <div id="demo{{book.pk}}" class="collapse">
 
               {%for b in books%}
