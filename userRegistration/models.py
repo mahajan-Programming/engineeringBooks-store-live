@@ -57,7 +57,7 @@ class NewBook(models.Model):
         # Resize/modify the image
 
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='JPEG', quality=25)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
@@ -84,7 +84,7 @@ class Calc(models.Model):
         # Resize/modify the image
 
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='JPEG', quality=25)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
@@ -107,7 +107,7 @@ class WorkShopUniForm(models.Model):
         # Resize/modify the image
 
         # after modifications, save it to the output
-        im.save(output, format='JPEG', quality=10)
+        im.save(output, format='JPEG', quality=25)
         output.seek(0)
 
         # change the imagefield value to be the newley modifed image value
