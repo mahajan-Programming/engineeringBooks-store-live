@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'userRegistration',    
     "crispy_forms",
     'storages',
-    'django_jinja'
+    'django_jinja',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
     
 
 ]
@@ -173,4 +179,30 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_IS_GZIPPED =True
 
 COMPRESS_STORAGE = STATICFILES_STORAGE
+
+
+
+
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+ )
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'https://buy-n--sell.herokuapp.com/'
+
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 

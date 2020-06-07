@@ -1,5 +1,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
+{% load socialaccount %}
+
 {% block head %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,6 +38,13 @@
         <br/>
         Loading...
     </div>
+
+    {%if user.is_authenticated %}
+
+    {% else %}
+  <h1>My Google Login Project</h1>
+  <a href="{% provider_login_url 'google' %}">Login with Google</a>
+  {% endif %}
 </body>
 
 </html>
