@@ -33,6 +33,11 @@ ALLOWED_HOSTS = ['buy-n--sell.herokuapp.com','127.0.0.1']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -43,11 +48,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     'storages',
     'django_jinja',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    
 
     
 
@@ -158,7 +159,6 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-LOGIN_REDIRECT_URL = '/'
 
 
 
@@ -183,14 +183,11 @@ COMPRESS_STORAGE = STATICFILES_STORAGE
 
 
 
-AUTHENTICATION_BACKENDS = (
- 'django.contrib.auth.backends.ModelBackend',
- 'allauth.account.auth_backends.AuthenticationBackend',
- )
+
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'https://buy-n--sell.herokuapp.com/'
+LOGIN_REDIRECT_URL = '/'
 
 
 
