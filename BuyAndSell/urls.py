@@ -21,8 +21,6 @@ urlpatterns = [
 
     path('', include('userRegistration.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')), # <--
-    path("in/", TemplateView.as_view(template_name="social_app/index.html")), # <--
 
 
 ]
