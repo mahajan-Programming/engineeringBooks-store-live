@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'userRegistration',    
     "crispy_forms",
     'storages',
-    'django_jinja'
+    'django_jinja',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     
 
 ]
@@ -174,3 +180,4 @@ AWS_IS_GZIPPED =True
 
 COMPRESS_STORAGE = STATICFILES_STORAGE
 
+SITE_ID = 1
