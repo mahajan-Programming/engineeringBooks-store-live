@@ -1,0 +1,99 @@
+{%block body%}
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - search cards</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 mb-4">
+      <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for card name...">
+    </div>
+  </div>
+
+  <div class="row" id="myProducts">
+
+    <div class="col-md-4">
+      <div class="card">
+
+        <div class="card-header bg-dark d-sm-flex justify-content-sm-between align-items-sm-center">
+          <div class=" card-title">
+            <a href="#" style="color:white" class="display-inline-   block" onmouseover="this.style.color='#00e6ac'" onmouseout="this.style.color='#fff'">
+       <strong>Card 1</strong>
+            </a>
+          </div>
+        </div>
+        <div class="card-body bg-light">
+          0000x01
+        </div>
+        <div class="card-footer bg-white d-flex justify-content-between">
+          <div>
+            <i class="icon-arrow-right5 mr-2"></i>Card number one
+          </div>
+        </div>
+      </div>
+      <div class="card">
+
+        <div class="card-header bg-dark d-sm-flex justify-content-sm-between align-items-sm-center">
+          <div class=" card-title">
+            <a href="#" style="color:white" class="display-inline-   block" onmouseover="this.style.color='#00e6ac'" onmouseout="this.style.color='#fff'">
+       <strong>Card 2</strong>
+            </a>
+          </div>
+        </div>
+        <div class="card-body bg-light">
+          0000x02
+        </div>
+        <div class="card-footer bg-white d-flex justify-content-between">
+          <div>
+            <i class="icon-arrow-right5 mr-2"></i>Card number two
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /transparent header, white footer -->
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
+
+{%endblock body%}
+
+{%block style%}
+<style>
+    .container {
+        padding: 10px;
+      }
+</style>
+{%endblock style%}
+
+{%block script%}
+<script>
+    function myFunction() {
+        var input, filter, cards, cardContainer, title, i;
+        input = document.getElementById("myFilter");//add div to html
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myProducts");//add div to html
+        cards = cardContainer.getElementsByClassName("card");  //change to container
+        for (i = 0; i < cards.length; i++) {
+          title = cards[i].querySelector(".card-title");//change this
+          if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+</script>
+{%endblock script%}

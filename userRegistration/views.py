@@ -168,3 +168,5 @@ def Test12(request):
     return render(request,"allcardsofseller.html",{})
 
 
+def searchcard(request):
+    return render(request,"searchcard.html",{})
