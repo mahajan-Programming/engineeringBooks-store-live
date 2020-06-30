@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, HttpResponse
 from .models import UserPersonalInfo,NewBook,User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from PayTm import Checksum
+from PayTm import Checksum 
 import uuid 
 Merchant_Key = "HiH%!dJxlr5ivoPB"
 # Create your views here.
