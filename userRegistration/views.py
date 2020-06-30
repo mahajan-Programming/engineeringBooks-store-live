@@ -14,7 +14,7 @@ def index(request):
                     "MID": "qsOMNF52276719267774",
                     "ORDER_ID": str(uuid.uuid1()) ,
                     "CUST_ID": "shreyashpm@gmail.com",
-                    "TXN_AMOUNT": "100",
+                    "TXN_zMOUNT": "100",
                     "CHANNEL_ID": "WEB",
                     "INDUSTRY_TYPE_ID": "Retail",
                     "WEBSITE": "WEBSTAGING",
@@ -101,7 +101,6 @@ def newbooks(request):
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
 
-A=0
 @login_required
 def sellerDashBoard(request):
     global A
