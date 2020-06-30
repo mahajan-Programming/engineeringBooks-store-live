@@ -173,7 +173,7 @@ def sellerDashBoard(request):
                     "CHANNEL_ID": "WEB",
                     "INDUSTRY_TYPE_ID": "Retail",
                     "WEBSITE": "WEBSTAGING",
-                    'CALLBACK_URL': "http://buy-n--sell.herokuapp.com//handlerequest/"
+                    'CALLBACK_URL': "http://buy-n--sell.herokuapp.com/handlerequest/"
             }
             param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict, Merchant_Key)
             return render(request,"paytm.html",{'param_dict':param_dict})
