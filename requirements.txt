@@ -28,3 +28,4 @@ django-storages==1.9.1
 boto3==1.13.19
 django-import-export==2.2.0
 django-jinja==2.6.0
+pycryptodome==3.9.8
