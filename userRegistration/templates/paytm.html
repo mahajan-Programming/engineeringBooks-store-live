@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>paytm</title>
+    </head>
+    <body>
+        <form method="POST" action="https://securegw-stage.paytm.in/theia/processTransaction" name="paytm">
+        {% for key,value in param_dict.items %}
+        <input type="hidden" name="{{key}}" value="{{value}}">
+        {% endfor %}
+        <button type="submit">hii</button>
+        </form>
+    </body>
+    <script>
+        document.paytm.submit()
+    </script>
+</html>

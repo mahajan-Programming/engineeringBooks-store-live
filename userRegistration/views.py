@@ -1,15 +1,32 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, HttpResponse
 from .models import UserPersonalInfo,NewBook,User
 from django.contrib.auth.decorators import login_required
-
+from django.views.decorators.csrf import csrf_exempt
+from PayTm import Checksum
+import uuid 
+Merchant_Key = "HiH%!dJxlr5ivoPB"
 # Create your views here.
 def index(request):
     a=0
     name = 'anonymous'
+    if request.method== 'POST':
+        param_dict = {
+                    "MID": "qsOMNF52276719267774",
+                    "ORDER_ID": str(uuid.uuid1()) ,
+                    "CUST_ID": "shreyashpm@gmail.com",
+                    "TXN_AMOUNT": "100",
+                    "CHANNEL_ID": "WEB",
+                    "INDUSTRY_TYPE_ID": "Retail",
+                    "WEBSITE": "WEBSTAGING",
+                    'CALLBACK_URL': "http://127.0.0.1:8000/handlerequest/"
+            }
+        param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict, Merchant_Key)
+        return render(request,"paytm.html",{'param_dict':param_dict})
     try:
        name = UserPersonalInfo.objects.get(username= request.user)
     except:
         a=1
+    
     return render(request,"index.html",{'check':a,'n':name})
 
 from .forms import RegisterForm,UserInfoForm,UserNewBook,AddCalc,AddWorkshopUni,AddFile
@@ -84,9 +101,10 @@ def newbooks(request):
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
 
-
+A=0
 @login_required
 def sellerDashBoard(request):
+    global A
     try:
         if(UserPersonalInfo.objects.all()):
             current_user = UserPersonalInfo.objects.get(username = request.user)
@@ -110,17 +128,56 @@ def sellerDashBoard(request):
     if request.method == 'POST':
         try:
             soldBook = request.POST.get('sold')
-            NewBook.objects.get(pk=soldBook).delete()
+            A=NewBook.objects.get(pk=soldBook)
+            param_dict = {
+                    "MID": "qsOMNF52276719267774",
+                    "ORDER_ID": str(uuid.uuid1()) ,
+                    "CUST_ID": "shreyashpm@gmail.com",
+                    "TXN_AMOUNT": "100",
+                    "CHANNEL_ID": "WEB",
+                    "INDUSTRY_TYPE_ID": "Retail",
+                    "WEBSITE": "WEBSTAGING",
+                    'CALLBACK_URL': "http://127.0.0.1:8000/handlerequest/"
+            }
+            param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict, Merchant_Key)
+
+            return render(request,"paytm.html",{'param_dict':param_dict})
         except:
             pass
         try:
             soldcalc = request.POST.get('soldclac')
-            Calc.objects.get(pk=soldcalc).delete()
+            A = Calc.objects.get(pk=soldcalc)
+            param_dict = {
+                    "MID": "qsOMNF52276719267774",
+                    "ORDER_ID": str(uuid.uuid1()) ,
+                    "CUST_ID": "shreyashpm@gmail.com",
+                    "TXN_AMOUNT": "100",
+                    "CHANNEL_ID": "WEB",
+                    "INDUSTRY_TYPE_ID": "Retail",
+                    "WEBSITE": "WEBSTAGING",
+                    'CALLBACK_URL': "http://127.0.0.1:8000/handlerequest/"
+            }
+            param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict, Merchant_Key)
+            return render(request,"paytm.html",{'param_dict':param_dict})
+
         except:
             pass
         try:
             solduni = request.POST.get('solduni')
-            WorkShopUniForm.objects.get(pk=solduni).delete()
+            A=WorkShopUniForm.objects.get(pk=solduni)
+            param_dict = {
+                    "MID": "qsOMNF52276719267774",
+                    "ORDER_ID": str(uuid.uuid1()) ,
+                    "CUST_ID": "shreyashpm@gmail.com",
+                    "TXN_AMOUNT": "100",
+                    "CHANNEL_ID": "WEB",
+                    "INDUSTRY_TYPE_ID": "Retail",
+                    "WEBSITE": "WEBSTAGING",
+                    'CALLBACK_URL': "http://buy-n--sell.herokuapp.com//handlerequest/"
+            }
+            param_dict["CHECKSUMHASH"] = Checksum.generate_checksum(param_dict, Merchant_Key)
+            return render(request,"paytm.html",{'param_dict':param_dict})
+
         except:
             pass
     return render(request,"newsellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc,'uniform':current_user_uni})
@@ -167,4 +224,20 @@ def ShowFileFolder(request,branch):
 def Test12(request):
     return render(request,"allcardsofseller.html",{})
 
+@csrf_exempt
+def handlerequest(request):
+    form = request.POST
+    response_dict ={}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i== 'CHECKSUMHASH':
+            checksum = form[i]
+    verify = Checksum.verify_checksum(response_dict, Merchant_Key, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print("order succesful")
+            A.delete()
+        else:
+            print("order not successful because"+ response_dict["RESPMSG"])
+    return render(request,"paymentstatus.html",{"response":response_dict})
 
