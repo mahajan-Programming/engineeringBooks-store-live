@@ -105,7 +105,7 @@ def NewSearch(request):
 
 @login_required
 def sellerDashBoard(request):
-	global A
+    global A
     try:
         if(UserPersonalInfo.objects.all()):
             current_user = UserPersonalInfo.objects.get(username = request.user)
