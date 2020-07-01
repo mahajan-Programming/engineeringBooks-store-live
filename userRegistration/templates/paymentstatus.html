@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h2>Payment status regarging your order id.. {{response.ORDERID}}</h2>
+        {%if response.RESPCODE == '01'%}
+        ORDER SUCCESSFUL
+        {%else%}
+        ORDER NOT SUCCESSFUL
+        {%endif%}
+
+    </body>
+</html>
