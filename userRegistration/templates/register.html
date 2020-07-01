@@ -1,9 +1,13 @@
 {% load crispy_forms_tags %}
+{%load socialaccount%}
+{%providers_media_js%}
 {% load static %}
 {% block head %}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">  
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
 {% endblock %}
 {% block body%}
 <!DOCTYPE html>
@@ -19,17 +23,30 @@
 
 <body>
     <h2 class="display-3 p-3 mb-2 bg-info text-primary " style="padding: 10px;">User Registration...</h2>
-
+    <a href="{%provider_login_url "google"%}">
+        <div class="google-btn" style="margin-left:auto; margin-right:auto" >
+            <div class="google-icon-wrapper">
+              <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+            </div>
+            <p class="btn-text">Sign in with google</p>
+          </div>
+        </a>
+        
     <form method="POST" onsubmit="myFunction()" style="width: 9cm; margin:auto; border: 0px solid ;  padding: 20px;
     ">
         {% csrf_token %}
-
+        <div style="text-align: center;"><b>OR</b></div>
+<br>
         {{form|crispy}}
         <div style="display: flex;">
         <button class="btn btn-lg btn-primary"  id="submit123" type="submit">Sign up</button>
         <a href="{%url 'loginform'%}" style="margin-left: 38%;" ><button type="button"  class="btn btn-lg btn-light">Login</button></a>
         </div>
     </form>
+
+    
+
+
     <div id="overlay" style="display:none;">
         <div class="spinner"></div>
         <br/>
@@ -61,6 +78,61 @@
 
 {%block style%}
 <style>
+
+    @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+    .google-btn {
+      width: 184px;
+      height: 42px;
+      background-color: #4285f4;
+      border-radius: 2px;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+    .google-btn .google-icon-wrapper {
+      position: absolute;
+      margin-top: 1px;
+      margin-left: 1px;
+      width: 40px;
+      height: 40px;
+      border-radius: 2px;
+      background-color: #fff;
+    }
+    .google-btn .google-icon {
+      position: absolute;
+      margin-top: 11px;
+      margin-left: 11px;
+      width: 18px;
+      height: 18px;
+    }
+    .google-btn .btn-text {
+      float: right;
+      margin: 11px 11px 0 0;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      font-family: "Roboto";
+    }
+    .google-btn:hover {
+      box-shadow: 0 0 6px #4285f4;
+    }
+    .google-btn:active {
+      background: #1669F2;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #overlay {
         background: #ffffff;
         color: #666666;
