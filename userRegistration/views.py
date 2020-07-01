@@ -240,3 +240,5 @@ def handlerequest(request):
             print("order not successful because"+ response_dict["RESPMSG"])
     return render(request,"paymentstatus.html",{"response":response_dict})
 
+def searchcard(request):
+    return render(request,"searchcard.html",{})

@@ -12,7 +12,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 {%endblock head%}
 {%block style%}
@@ -448,19 +451,36 @@ section.pricing {
 
   </h2>
   <div class="scrollmenu">
-  <a href="{%url 'unicards'%}"><button>Calculator & Uniform</button></a>
-  
-  <a href="{%url 'filesFolder' b%}"><button>Get PDF's</button></a>
-  <a href="{%url 'searchbooks'%}"><button>Search Other Books</button></a>
-
+ 
   </div>
 
     <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
     <div id="myDIV">
-  <div class="dc-view-switcher">
+  <!-- <div class="dc-view-switcher">
     <button data-trigger="grid-view"></button>
     <button data-trigger="list-view" class="active"></button>
-  </div>
+  </div> -->
+      <!-- <input type="text" id="myFilter" class="form-control" onkeyup="myFunction()" placeholder="Search for card name..."> -->
+      
+
+
+
+
+  
+      <label for="myFilter">Filter by College..</label>
+
+<select class="form-control" id="myFilter" onchange="myFunction()"  name="sellist1">
+        <option value="">All</option>
+        {%for b in books%}
+        <option>{{b.BookOwner.Institute}}</option>
+        {%endfor%}
+      </select>
+
+<br>  
+
+    <div class="row" id="myProducts">
+
+
 
   {%for book in books%}
   <div data-view="list-view" class="download-cards">
@@ -475,29 +495,29 @@ section.pricing {
 
 
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal{{book.pk}}" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">{{book.BookName}}</h4>
-        </div>
-        <div class="modal-body">
-          <img width="270" height="" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
-        <div class="modal-footer">
-          Other Books by seller....<br>
-          {%for b in books%}
-            {%if book.BookOwner == b.BookOwner%}
-            <h4>{{b.BookName}}, Rs.{{b.Price}}/-</h4>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal{{book.pk}}" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">{{book.BookName}}</h4>
+          </div>
+          <div class="modal-body">
+            <img width="270" height="" src="https://django-buy-n--sell-files.s3.ap-south-1.amazonaws.com/{{book.BookImage}}" />        </div>
+          <div class="modal-footer">
+            Other Books by seller....<br>
+            {%for b in books%}
+              {%if book.BookOwner == b.BookOwner%}
+              <h4>{{b.BookName}}, Rs.{{b.Price}}/-</h4>
             {%endif%}
           {%endfor%}
           <a  href="https://api.whatsapp.com/send?text=hi i'm instrested to buy your book *{{book.BookName}} Rs. {{book.Price}}/-* Please contact me if you want to Sell &phone=+91{{book.BookOwner.PhoneNo}}" class=""> <i class="fa fa-cloud-download"></i> Whatsapp {{book.BookOwner.PhoneNo}}</a>
 
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
 
       <div class="download-card__content-box">
@@ -534,6 +554,8 @@ section.pricing {
     </article>
     </div>
     {%endfor%}
+
+    <div>
   </div>
 </div>
 <!-- partial -->
@@ -570,10 +592,33 @@ section.pricing {
     </div>		
   </div>
 </nav>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
 {%endblock body%}
 {%block script%}
 <script>
+
+ function myFunction() {
+        var input, filter, cards, cardContainer, title, i;
+        input = document.getElementById("myFilter");//add div to html
+        filter = input.value.toUpperCase();
+        cardContainer = document.getElementById("myProducts");//add div to html
+        cards = cardContainer.getElementsByClassName("download-cards");  //change to container
+        for (i = 0; i < cards.length; i++) {
+          title = cards[i].querySelector(".download-card__content-box__description");
+          if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+          } else {
+            cards[i].style.display = "none";
+          }
+        }
+      }
+
+
+
+
+
 
 
 

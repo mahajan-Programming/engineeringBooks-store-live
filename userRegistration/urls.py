@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 from . import views 
 from userRegistration.views import index,register,userInfoFrom,NewBookForm,Test,books,newbooks,NewSearch,sellerDashBoard,CalcForm,Uniform,UniCard,FileForm,ShowFileFolder,Test12,handlerequest
+from userRegistration.views import index,register,userInfoFrom,NewBookForm,Test,books,newbooks,NewSearch,sellerDashBoard,CalcForm,Uniform,UniCard,FileForm,ShowFileFolder,Test12,searchcard
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -24,9 +25,10 @@ urlpatterns = [
     path('FileForm/',views.FileForm,name="FileForm"),
     path('ShowFileFolder/<str:branch>/',views.ShowFileFolder,name="filesFolder"),
     path('Test12/',views.Test12,name="filesFolder"),
-    path('handlerequest/',views.handlerequest,name="HandleRequest")
+    path('handlerequest/',views.handlerequest,name="HandleRequest"),
 
 
+    path("searchcard/",views.searchcard,name="searchcard")
 ]
 
 if settings.DEBUG:
