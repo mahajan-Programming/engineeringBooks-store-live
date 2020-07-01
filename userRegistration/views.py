@@ -100,10 +100,10 @@ def newbooks(request):
 
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
+global A
 
 @login_required
 def sellerDashBoard(request):
-    global A
     try:
         if(UserPersonalInfo.objects.all()):
             current_user = UserPersonalInfo.objects.get(username = request.user)
