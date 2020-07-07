@@ -100,10 +100,10 @@ def newbooks(request):
 
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
-global A
-
+A = None  
 @login_required
 def sellerDashBoard(request):
+    global A
     try:
         if(UserPersonalInfo.objects.all()):
             current_user = UserPersonalInfo.objects.get(username = request.user)
@@ -150,7 +150,7 @@ def sellerDashBoard(request):
                     "MID": "qsOMNF52276719267774",
                     "ORDER_ID": str(uuid.uuid1()) ,
                     "CUST_ID": "shreyashpm@gmail.com",
-                    "TXN_AMOUNT": "100",
+                    "TXN_AMOUNT": "4",
                     "CHANNEL_ID": "WEB",
                     "INDUSTRY_TYPE_ID": "Retail",
                     "WEBSITE": "WEBSTAGING",
@@ -168,7 +168,7 @@ def sellerDashBoard(request):
                     "MID": "qsOMNF52276719267774",
                     "ORDER_ID": str(uuid.uuid1()) ,
                     "CUST_ID": "shreyashpm@gmail.com",
-                    "TXN_AMOUNT": "100",
+                    "TXN_AMOUNT": "4",
                     "CHANNEL_ID": "WEB",
                     "INDUSTRY_TYPE_ID": "Retail",
                     "WEBSITE": "WEBSTAGING",
